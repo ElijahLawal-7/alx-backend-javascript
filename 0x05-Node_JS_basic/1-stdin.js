@@ -1,11 +1,11 @@
-// This program gets user data & prints it to STDIN
-
 process.stdout.write('Welcome to Holberton School, what is your name?\n');
-process.stdin.on('readable', () => {
-  const inputData = process.stdin.read();
 
-  if (inputData) {
-    process.stdout.write(`Your name is: ${inputData}`);
+process.stdin.setEncoding('utf8');
+
+process.stdin.on('readable', () => {
+  const chunk = process.stdin.read();
+  if (chunk !== null) {
+    process.stdout.write(`Your name is: ${chunk}`);
   }
 });
 

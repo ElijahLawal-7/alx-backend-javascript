@@ -1,20 +1,16 @@
 const http = require('http');
 
-const PORT = 1245;
-const HOST = 'localhost';
+const hostname = '127.0.0.1';
+const port = 1245;
 
-const app = http.createServer();
-
-app.on('request', (_, res) => {
-  const resText = 'Hello Holberton School!';
+const app = http.createServer((req, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
-  res.setHeader('Content-Length', resText.length);
-  res.write(Buffer.from(resText));
+  res.end('Hello Holberton School!');
 });
 
-app.listen(PORT, HOST, () => {
-  process.stdout.write(`Server listening at -> http://${HOST}:${PORT}\n`);
+app.listen(port, hostname, () => {
+  //   console.log(`Server running at http://${hostname}:${port}/`);
 });
 
 module.exports = app;
